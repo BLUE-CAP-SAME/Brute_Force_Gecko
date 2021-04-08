@@ -59,8 +59,6 @@ class WebFoxBot:
         time.sleep(1)
 
     def shutdown(self):
-        self.browser.close()
-        self.browser.delete_all_cookies()
         self.browser.quit()
         
     # set FoxBot using ssl(https) proxy
@@ -114,6 +112,7 @@ class WebFoxBot:
             username_input_name.send_keys(username)
             password_input_name.send_keys(password)
             login_button = self.browser.find_element_by_xpath("//*[@id='react-root']/div/div/div[2]/main/div/div/div[2]/form/div/div[3]/div")
+            print("\033[1;38mtwitter.com: {}\033[1;38m".format(login_button.text))
             login_button.click()
             time.sleep(10)
             login_status= self.browser.find_element_by_xpath("//*[@id='react-root']/div/div/div[2]/main/div/div/div/div/div/div/div/div/div")
